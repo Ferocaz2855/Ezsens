@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EZSENS - Tienda Oficial</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <h1>EZSENS</h1>
+        </div>
+        <nav class="nav">
+            <a href="index.html" class="nav-link">Inicio</a>
+            <a href="nike-tech.html" class="nav-link">NIKE TECH</a>
+            <a href="nike-zyna.html" class="nav-link">NIKE X ZYNA</a>
+            <a href="nike-nocta.html" class="nav-link">NIKE X NOCTA</a>
+        </nav>
+        <div class="cart-icon">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count">0</span>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>COLECCIÓN EXCLUSIVA</h2>
+            <p>Ropa deportiva premium - Envíos a todo el Perú</p>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured-products">
+        <h2 class="section-title">PRODUCTOS DESTACADOS</h2>
+        <div class="products-grid" id="featured-products">
+            <!-- Los productos se cargan dinámicamente desde JSON -->
+        </div>
+    </section>
+
+    <!-- Product Categories -->
+    <section class="categories">
+        <h2 class="section-title">COLECCIONES</h2>
+        <div class="categories-grid">
+    <a href="nike-tech.html" class="category-card">
+        <div class="category-image" style="background-image: url('assets/images/productos/nike-tech-1.jpg');"></div>
+        <h3>NIKE TECH</h3>
+    </a>
+    <a href="nike-zyna.html" class="category-card">
+        <div class="category-image" style="background-image: url('assets/images/productos/nike-x-zyna-1.jpg');"></div>
+        <h3>NIKE X ZYNA</h3>
+    </a>
+    <a href="nike-nocta.html" class="category-card">
+        <div class="category-image" style="background-image: url('assets/images/productos/nike-x-nocta-1.jpg');"></div>
+        <h3>NIKE X NOCTA</h3>
+    </a>
+</div>
+    </section>
+
+    <!-- Shopping Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>TU CARRITO</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="cart-items" id="cartItems">
+                    <!-- Items del carrito -->
+                </div>
+                <div class="cart-total">
+                    <p>Total: <span id="cartTotal">$0.00</span></p>
+                </div>
+                <button class="checkout-btn" id="checkoutBtn">REALIZAR PEDIDO</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="checkout-modal" id="checkoutModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>DATOS DEL PEDIDO</h3>
+                <button class="close-checkout">&times;</button>
+            </div>
+            <form id="checkoutForm" class="checkout-form">
+                <div class="form-group">
+                    <label for="nombre">Nombres *</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="apellido">Apellidos *</label>
+                    <input type="text" id="apellido" name="apellido" required>
+                </div>
+                <div class="form-group">
+                    <label for="whatsapp">WhatsApp *</label>
+                    <input type="tel" id="whatsapp" name="whatsapp" required>
+                </div>
+                <div class="form-group">
+                    <label for="dni">DNI o CE *</label>
+                    <input type="text" id="dni" name="dni" required>
+                </div>
+                <div class="form-group">
+                    <label for="provincia">Provincia *</label>
+                    <select id="provincia" name="provincia" required>
+                        <option value="">Selecciona provincia</option>
+                        <option value="Lima">Lima</option>
+                        <option value="Arequipa">Arequipa</option>
+                        <option value="Cusco">Cusco</option>
+                        <option value="Trujillo">Trujillo</option>
+                        <!-- Más provincias -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="distrito">Distrito *</label>
+                    <input type="text" id="distrito" name="distrito" required>
+                </div>
+                <div class="form-group">
+                    <label for="direccion">Dirección completa *</label>
+                    <textarea id="direccion" name="direccion" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="referencia">Referencia (opcional)</label>
+                    <textarea id="referencia" name="referencia" rows="2"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="submit-order">CONFIRMAR PEDIDO</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>EZSENS</h4>
+                <p>Tienda oficial de ropa deportiva premium</p>
+            </div>
+            <div class="footer-section">
+                <h4>Contacto</h4>
+                <p><i class="fab fa-whatsapp"></i> +51 999 888 777</p>
+                <p><i class="fas fa-envelope"></i> info@ezsens.com</p>
+            </div>
+            <div class="footer-section">
+                <h4>Métodos de pago</h4>
+                <p>Yape / Plin / Transferencia / Contraentrega</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 EZSENS. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

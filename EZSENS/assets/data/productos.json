@@ -1,0 +1,48 @@
+{
+    "productos": [
+        {
+            "id": 1,
+            "categoria": "nike-tech",
+            "nombre": "Nike Tech Fleece Hoodie Black",
+            "imagen": "assets/images/productos/nike-tech-1.jpg",
+            "bonos": "+100 bonbons",
+            "precio": 1320.00,
+            "sku": "6/-448-0",
+            "descripcion": "Chamarra Nike Tech Fleece de alta calidad",
+            "stock": 10
+        },
+        {
+            "id": 2,
+            "categoria": "nike-tech",
+            "nombre": "Nike Tech Fleece Pants",
+            "imagen": "assets/images/productos/nike-tech-2.jpg",
+            "bonos": "+80 bonbons",
+            "precio": 980.00,
+            "sku": "6/-449-1",
+            "descripcion": "Pantalones Nike Tech Fleece",
+            "stock": 15
+        },
+        {
+            "id": 3,
+            "categoria": "nike-zyna",
+            "nombre": "Nike x Zyna Hoodie",
+            "imagen": "assets/images/productos/nike-x-zyna-1.jpg",
+            "bonos": "+120 bonbons",
+            "precio": 1500.00,
+            "sku": "ZYNA-001",
+            "descripcion": "Edición especial Nike x Zyna",
+            "stock": 5
+        },
+        {
+            "id": 4,
+            "categoria": "nike-nocta",
+            "nombre": "Nike x Nocta Tech Fleece",
+            "imagen": "assets/images/productos/nike-x-nocta-1.jpg",
+            "bonos": "+150 bonbons",
+            "precio": 1800.00,
+            "sku": "NOCTA-001",
+            "descripcion": "Colaboración exclusiva Nike x Nocta",
+            "stock": 8
+        }
+    ]
+}

@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIKE TECH - EZSENS</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <h1>EZSENS</h1>
+        </div>
+        <nav class="nav">
+            <a href="index.html" class="nav-link">Inicio</a>
+            <a href="nike-tech.html" class="nav-link active">NIKE TECH</a>
+            <a href="nike-zyna.html" class="nav-link">NIKE X ZYNA</a>
+            <a href="nike-nocta.html" class="nav-link">NIKE X NOCTA</a>
+        </nav>
+        <div class="cart-icon">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count">0</span>
+        </div>
+    </header>
+
+    <section class="category-banner" style="background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('assets/images/productos/nike-tech-banner.jpg') center/cover;">
+        <div class="banner-content">
+            <h1>NIKE TECH</h1>
+            <p>Tecnología y estilo en cada prenda - Colección completa</p>
+        </div>
+    </section>
+
+    <section class="category-products">
+        <div class="products-grid" id="tech-products">
+            <!-- Productos se cargan dinámicamente -->
+        </div>
+    </section>
+
+    <!-- Shopping Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>TU CARRITO</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="cart-items" id="cartItems">
+                    <!-- Items del carrito -->
+                </div>
+                <div class="cart-total">
+                    <p>Total: <span id="cartTotal">S/ 0.00</span></p>
+                </div>
+                <button class="checkout-btn" id="checkoutBtn">REALIZAR PEDIDO</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="checkout-modal" id="checkoutModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>DATOS DEL PEDIDO</h3>
+                <button class="close-checkout">&times;</button>
+            </div>
+            <form id="checkoutForm" class="checkout-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nombre">Nombres *</label>
+                        <input type="text" id="nombre" name="nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="apellido">Apellidos *</label>
+                        <input type="text" id="apellido" name="apellido" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="whatsapp">WhatsApp *</label>
+                        <input type="tel" id="whatsapp" name="whatsapp" required placeholder="+51 999 888 777">
+                    </div>
+                    <div class="form-group">
+                        <label for="dni">DNI o CE *</label>
+                        <input type="text" id="dni" name="dni" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="provincia">Departamento/Provincia *</label>
+                        <div class="search-select">
+                            <input type="text" id="provinciaSearch" placeholder="Buscar departamento..." 
+                                   class="search-input" onkeyup="filtrarProvincias()" onclick="mostrarListaProvincias()">
+                            <select id="provincia" name="provincia" required class="select-hidden" size="5" 
+                                    onchange="seleccionarProvincia(this)">
+                                <option value="">Selecciona departamento</option>
+                                <!-- Provincias se cargan dinámicamente -->
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="distrito">Distrito *</label>
+                        <div class="search-select">
+                            <input type="text" id="distritoSearch" placeholder="Primero selecciona departamento" 
+                                   class="search-input" disabled onkeyup="filtrarDistritos()" onclick="mostrarListaDistritos()">
+                            <select id="distrito" name="distrito" required class="select-hidden" size="5" 
+                                    onchange="seleccionarDistrito(this)" disabled>
+                                <option value="">Selecciona distrito</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="direccion">Dirección completa *</label>
+                    <textarea id="direccion" name="direccion" rows="3" required placeholder="Calle, número, urbanización, referencia"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="referencia">Referencia adicional (opcional)</label>
+                    <textarea id="referencia" name="referencia" rows="2" placeholder="Punto de referencia cercano, color de casa, etc."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="aceptoTerminos" required>
+                        Acepto los términos y condiciones *
+                    </label>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="submit-order">CONFIRMAR PEDIDO</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>EZSENS</h4>
+                <p>Tienda oficial de ropa deportiva premium</p>
+            </div>
+            <div class="footer-section">
+                <h4>Contacto</h4>
+                <p><i class="fab fa-whatsapp"></i> +51 999 888 777</p>
+                <p><i class="fas fa-envelope"></i> info@ezsens.com</p>
+            </div>
+            <div class="footer-section">
+                <h4>Métodos de pago</h4>
+                <p>Yape / Plin / Transferencia</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 EZSENS. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Productos Nike Tech
+        const productosTech = [
+            {
+                id: 101,
+                nombre: "Nike Tech Fleece Hoodie Black",
+                imagen: "assets/images/productos/nike-tech-1.jpg",
+                bonos: "+100 bonbons",
+                precio: 1320.00, // En soles
+                sku: "TECH-001",
+                descripcion: "Chamarra Nike Tech Fleece color negro premium",
+                categoria: "Hoodies"
+            },
+            {
+                id: 102,
+                nombre: "Nike Tech Fleece Pants Gray",
+                imagen: "assets/images/productos/nike-tech-2.jpg",
+                bonos: "+80 bonbons",
+                precio: 980.00,
+                sku: "TECH-002",
+                descripcion: "Pantalones Nike Tech Fleece color gris",
+                categoria: "Pants"
+            },
+            {
+                id: 103,
+                nombre: "Nike Tech Fleece Full Set",
+                imagen: "assets/images/productos/nike-tech-3.jpg",
+                bonos: "+150 bonbons",
+                precio: 2100.00,
+                sku: "TECH-003",
+                descripcion: "Set completo Nike Tech Fleece (Chamarra + Pantalón)",
+                categoria: "Sets"
+            },
+            {
+                id: 104,
+                nombre: "Nike Tech Fleece Jacket Navy",
+                imagen: "assets/images/productos/nike-tech-4.jpg",
+                bonos: "+120 bonbons",
+                precio: 1450.00,
+                sku: "TECH-004",
+                descripcion: "Champera Nike Tech Fleece color azul marino",
+                categoria: "Jackets"
+            },
+            {
+                id: 105,
+                nombre: "Nike Tech Fleece Joggers",
+                imagen: "assets/images/productos/nike-tech-5.jpg",
+                bonos: "+90 bonbons",
+                precio: 1050.00,
+                sku: "TECH-005",
+                descripcion: "Joggers Nike Tech Fleece para entrenamiento",
+                categoria: "Joggers"
+            },
+            {
+                id: 106,
+                nombre: "Nike Tech Windrunner",
+                imagen: "assets/images/productos/nike-tech-6.jpg",
+                bonos: "+110 bonbons",
+                precio: 1250.00,
+                sku: "TECH-006",
+                descripcion: "Chamarra Nike Tech Windrunner resistente al viento",
+                categoria: "Windbreakers"
+            }
+        ];
+
+        // Variables globales
+        let departamentosData = [];
+        let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            cargarProductosTech();
+            configurarEventos();
+            cargarDepartamentos();
+            actualizarContadorCarrito();
+        });
+
+        function cargarProductosTech() {
+            const container = document.getElementById('tech-products');
+            container.innerHTML = '';
+            
+            productosTech.forEach(producto => {
+                const productCard = `
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('${producto.imagen}')"></div>
+                        <div class="product-info">
+                            <h3 class="product-title">${producto.nombre}</h3>
+                            <p class="product-bonus">${producto.bonos}</p>
+                            <p class="product-price">S/ ${producto.precio.toFixed(2)}</p>
+                            <p class="product-sku">SKU: ${producto.sku}</p>
+                            <p class="product-category">${producto.categoria}</p>
+                            <p class="product-desc">${producto.descripcion}</p>
+                            <button class="add-to-cart" onclick="agregarAlCarrito(${producto.id})">
+                                <i class="fas fa-cart-plus"></i> AGREGAR AL CARRITO
+                            </button>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += productCard;
+            });
+        }
+
+        async function cargarDepartamentos() {
+            try {
+                const response = await fetch('assets/data/peru.json');
+                const data = await response.json();
+                departamentosData = data.departamentos;
+                
+                const selectProvincia = document.getElementById('provincia');
+                
+                // Llenar select de provincias
+                departamentosData.forEach(depto => {
+                    const option = document.createElement('option');
+                    option.value = depto.nombre;
+                    option.textContent = depto.nombre;
+                    selectProvincia.appendChild(option);
+                });
+                
+            } catch (error) {
+                console.error('Error cargando departamentos:', error);
+                // Datos de respaldo
+                departamentosData = [
+                    {
+                        nombre: "Lima",
+                        distritos: ["Lima", "Miraflores", "San Isidro", "Surco", "La Molina", "San Borja", "Barranco", "Jesus Maria", "Magdalena", "Pueblo Libre", "San Miguel"]
+                    },
+                    {
+                        nombre: "Arequipa",
+                        distritos: ["Arequipa", "Cayma", "Cerro Colorado", "Yanahuara", "Jacobo Hunter", "Sachaca", "Alto Selva Alegre"]
+                    },
+                    {
+                        nombre: "Cusco",
+                        distritos: ["Cusco", "San Sebastian", "San Jerónimo", "Santiago", "Wanchaq"]
+                    }
+                ];
+                
+                const selectProvincia = document.getElementById('provincia');
+                departamentosData.forEach(depto => {
+                    const option = document.createElement('option');
+                    option.value = depto.nombre;
+                    option.textContent = depto.nombre;
+                    selectProvincia.appendChild(option);
+                });
+            }
+        }
+
+        function configurarEventos() {
+            // Carrito
+            document.querySelector('.cart-icon').addEventListener('click', mostrarCarrito);
+            document.querySelector('.close-modal').addEventListener('click', cerrarCarrito);
+            document.getElementById('checkoutBtn').addEventListener('click', mostrarCheckout);
+            document.querySelector('.close-checkout').addEventListener('click', cerrarCheckout);
+            
+            // Checkout
+            document.getElementById('checkoutForm').addEventListener('submit', procesarPedido);
+            
+            // Cerrar modales al hacer clic fuera
+            window.addEventListener('click', (e) => {
+                if (e.target === document.getElementById('cartModal')) cerrarCarrito();
+                if (e.target === document.getElementById('checkoutModal')) cerrarCheckout();
+            });
+            
+            // Cerrar lista al hacer clic fuera
+            document.addEventListener('click', (e) => {
+                const provinciaSearch = document.getElementById('provinciaSearch');
+                const provinciaSelect = document.getElementById('provincia');
+                const distritoSearch = document.getElementById('distritoSearch');
+                const distritoSelect = document.getElementById('distrito');
+                
+                if (!e.target.closest('.search-select')) {
+                    provinciaSelect.size = 1;
+                    provinciaSelect.classList.add('select-hidden');
+                    distritoSelect.size = 1;
+                    distritoSelect.classList.add('select-hidden');
+                }
+            });
+        }
+
+        // Funciones del carrito
+        function agregarAlCarrito(id) {
+            const producto = productosTech.find(p => p.id === id);
+            if (!producto) return;
+            
+            const itemExistente = carrito.find(item => item.id === id);
+            
+            if (itemExistente) {
+                itemExistente.cantidad++;
+            } else {
+                carrito.push({
+                    ...producto,
+                    cantidad: 1
+                });
+            }
+            
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+            actualizarContadorCarrito();
+            mostrarNotificacion(`${producto.nombre} agregado al carrito`, 'success');
+        }
+
+        function actualizarContadorCarrito() {
+            carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+            const totalItems = carrito.reduce((total, item) => total + item.cantidad, 0);
+            document.querySelector('.cart-count').textContent = totalItems;
+        }
+
+        function mostrarCarrito() {
+            const modal = document.getElementById('cartModal');
+            carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+            const itemsContainer = document.getElementById('cartItems');
+            const totalContainer = document.getElementById('cartTotal');
+            
+            if (carrito.length === 0) {
+                itemsContainer.innerHTML = '<p class="cart-empty">El carrito está vacío</p>';
+                totalContainer.textContent = 'S/ 0.00';
+            } else {
+                let html = '';
+                let total = 0;
+                
+                carrito.forEach(item => {
+                    const subtotal = item.precio * item.cantidad;
+                    total += subtotal;
+                    
+                    html += `
+                        <div class="cart-item">
+                            <div class="cart-item-info">
+                                <h4>${item.nombre}</h4>
+                                <p>S/ ${item.precio.toFixed(2)} x ${item.cantidad}</p>
+                                <p class="product-sku-small">SKU: ${item.sku}</p>
+                            </div>
+                            <div class="cart-item-actions">
+                                <div class="quantity-controls">
+                                    <button onclick="modificarCantidad(${item.id}, -1)">-</button>
+                                    <span>${item.cantidad}</span>
+                                    <button onclick="modificarCantidad(${item.id}, 1)">+</button>
+                                </div>
+                                <p class="cart-item-subtotal">S/ ${subtotal.toFixed(2)}</p>
+                                <button onclick="eliminarDelCarrito(${item.id})" class="btn-delete">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                itemsContainer.innerHTML = html;
+                totalContainer.textContent = `S/ ${total.toFixed(2)}`;
+            }
+            
+            modal.style.display = 'flex';
+        }
+
+        function modificarCantidad(id, cambio) {
+            const itemIndex = carrito.findIndex(item => item.id === id);
+            if (itemIndex === -1) return;
+            
+            carrito[itemIndex].cantidad += cambio;
+            
+            if (carrito[itemIndex].cantidad <= 0) {
+                carrito.splice(itemIndex, 1);
+            }
+            
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+            mostrarCarrito();
+            actualizarContadorCarrito();
+        }
+
+        function cerrarCarrito() {
+            document.getElementById('cartModal').style.display = 'none';
+        }
+
+        function eliminarDelCarrito(id) {
+            carrito = carrito.filter(item => item.id !== id);
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+            mostrarCarrito();
+            actualizarContadorCarrito();
+        }
+
+        function mostrarCheckout() {
+            carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+            if (carrito.length === 0) {
+                mostrarNotificacion('El carrito está vacío', 'error');
+                return;
+            }
+            
+            cerrarCarrito();
+            document.getElementById('checkoutModal').style.display = 'flex';
+            
+            // Resetear selects
+            document.getElementById('distritoSearch').disabled = true;
+            document.getElementById('distritoSearch').placeholder = "Primero selecciona departamento";
+            document.getElementById('distrito').disabled = true;
+            document.getElementById('distrito').innerHTML = '<option value="">Selecciona distrito</option>';
+        }
+
+        function cerrarCheckout() {
+            document.getElementById('checkoutModal').style.display = 'none';
+        }
+
+        // Funciones para búsqueda de provincias/distritos
+        window.mostrarListaProvincias = function() {
+            const provinciaSelect = document.getElementById('provincia');
+            provinciaSelect.size = 6;
+            provinciaSelect.classList.remove('select-hidden');
+            provinciaSelect.focus();
+        }
+
+        window.mostrarListaDistritos = function() {
+            const distritoSelect = document.getElementById('distrito');
+            if (!distritoSelect.disabled) {
+                distritoSelect.size = 6;
+                distritoSelect.classList.remove('select-hidden');
+                distritoSelect.focus();
+            }
+        }
+
+        window.seleccionarProvincia = function(select) {
+            const provinciaSearch = document.getElementById('provinciaSearch');
+            const distritoSearch = document.getElementById('distritoSearch');
+            const distritoSelect = document.getElementById('distrito');
+            
+            if (select.value) {
+                provinciaSearch.value = select.options[select.selectedIndex].text;
+                select.size = 1;
+                select.classList.add('select-hidden');
+                
+                // Habilitar y cargar distritos
+                distritoSearch.disabled = false;
+                distritoSearch.placeholder = `Buscar distrito en ${provinciaSearch.value}...`;
+                distritoSelect.disabled = false;
+                
+                // Cargar distritos de la provincia seleccionada
+                const selectedDepto = departamentosData.find(d => d.nombre === select.value);
+                if (selectedDepto) {
+                    distritoSelect.innerHTML = '<option value="">Selecciona distrito</option>';
+                    selectedDepto.distritos.forEach(distrito => {
+                        const option = document.createElement('option');
+                        option.value = distrito;
+                        option.textContent = distrito;
+                        distritoSelect.appendChild(option);
+                    });
+                }
+            }
+        }
+
+        window.seleccionarDistrito = function(select) {
+            const distritoSearch = document.getElementById('distritoSearch');
+            if (select.value) {
+                distritoSearch.value = select.options[select.selectedIndex].text;
+                select.size = 1;
+                select.classList.add('select-hidden');
+            }
+        }
+
+        window.filtrarProvincias = function() {
+            const input = document.getElementById('provinciaSearch');
+            const filter = input.value.toUpperCase();
+            const select = document.getElementById('provincia');
+            const options = select.getElementsByTagName('option');
+            
+            for (let i = 0; i < options.length; i++) {
+                const txtValue = options[i].textContent || options[i].innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    options[i].style.display = "";
+                } else {
+                    options[i].style.display = "none";
+                }
+            }
+            
+            // Mostrar lista si hay texto en la búsqueda
+            if (filter.length > 0) {
+                select.size = 6;
+                select.classList.remove('select-hidden');
+            }
+        }
+
+        window.filtrarDistritos = function() {
+            const input = document.getElementById('distritoSearch');
+            const filter = input.value.toUpperCase();
+            const select = document.getElementById('distrito');
+            const options = select.getElementsByTagName('option');
+            
+            for (let i = 0; i < options.length; i++) {
+                const txtValue = options[i].textContent || options[i].innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    options[i].style.display = "";
+                } else {
+                    options[i].style.display = "none";
+                }
+            }
+            
+            // Mostrar lista si hay texto en la búsqueda
+            if (filter.length > 0 && !select.disabled) {
+                select.size = 6;
+                select.classList.remove('select-hidden');
+            }
+        }
+
+        // Función para mostrar notificaciones
+        function mostrarNotificacion(mensaje, tipo = 'success') {
+            const notificacion = document.createElement('div');
+            notificacion.className = `notificacion ${tipo}`;
+            notificacion.innerHTML = `
+                <i class="fas ${tipo === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
+                <span>${mensaje}</span>
+            `;
+            
+            document.body.appendChild(notificacion);
+            
+            setTimeout(() => notificacion.classList.add('show'), 10);
+            
+            setTimeout(() => {
+                notificacion.classList.remove('show');
+                setTimeout(() => notificacion.remove(), 300);
+            }, 3000);
+        }
+
+        // Función para procesar pedido
+        async function procesarPedido(e) {
+            e.preventDefault();
+            
+            // Validar términos
+            if (!document.getElementById('aceptoTerminos').checked) {
+                mostrarNotificacion('Debes aceptar los términos y condiciones', 'error');
+                return;
+            }
+            
+            const formData = new FormData(document.getElementById('checkoutForm'));
+            const datosCliente = Object.fromEntries(formData);
+            
+            // Validar campos requeridos
+            if (!datosCliente.provincia || !datosCliente.distrito) {
+                mostrarNotificacion('Por favor selecciona departamento y distrito', 'error');
+                return;
+            }
+            
+            carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+            
+            if (carrito.length === 0) {
+                mostrarNotificacion('El carrito está vacío', 'error');
+                return;
+            }
+            
+            const total = carrito.reduce((sum, item) => sum + (item.precio * item.cantidad), 0);
+            const pedidoId = 'TECH-' + Date.now().toString().slice(-6);
+            
+            // Crear mensaje para WhatsApp
+            let mensaje = `🏃‍♂️ *NUEVO PEDIDO NIKE TECH* 🏃‍♂️\n\n`;
+            mensaje += `*Pedido ID:* ${pedidoId}\n`;
+            mensaje += `*Fecha:* ${new Date().toLocaleString('es-PE')}\n\n`;
+            
+            mensaje += `*👤 DATOS DEL CLIENTE*\n`;
+            mensaje += `Nombre: ${datosCliente.nombre} ${datosCliente.apellido}\n`;
+            mensaje += `WhatsApp: ${datosCliente.whatsapp}\n`;
+            mensaje += `DNI/CE: ${datosCliente.dni}\n`;
+            mensaje += `Ubicación: ${datosCliente.provincia}, ${datosCliente.distrito}\n`;
+            mensaje += `Dirección: ${datosCliente.direccion}\n`;
+            if (datosCliente.referencia) {
+                mensaje += `Referencia: ${datosCliente.referencia}\n`;
+            }
+            
+            mensaje += `\n*🛍️ PRODUCTOS (NIKE TECH)*\n`;
+            carrito.forEach((item, index) => {
+                const subtotal = item.precio * item.cantidad;
+                mensaje += `➤ ${item.nombre}\n`;
+                mensaje += `   📦 Cantidad: ${item.cantidad}\n`;
+                mensaje += `   💰 Precio: S/ ${item.precio.toFixed(2)}\n`;
+                mensaje += `   🔢 SKU: ${item.sku}\n`;
+                mensaje += `   🧮 Subtotal: S/ ${subtotal.toFixed(2)}\n\n`;
+            });
+            
+            mensaje += `*💰 TOTAL A PAGAR: S/ ${total.toFixed(2)}*\n\n`;
+            mensaje += `*📋 ESTADO:* Pendiente de pago\n`;
+            mensaje += `*💳 MÉTODOS DE PAGO:* Yape / Plin / Transferencia\n\n`;
+            mensaje += `*ℹ️ INSTRUCCIONES:*\n`;
+            mensaje += `1. Realiza el pago por el monto total\n`;
+            mensaje += `2. Envía el comprobante a este número\n`;
+            mensaje += `3. Tu pedido será procesado en 24-48 horas\n`;
+            mensaje += `4. Te enviaremos el tracking de envío`;
+            
+            // Número de WhatsApp (cambiar por tu número)
+            const telefono = '51999888777'; // TU NÚMERO AQUÍ - formato: 51999123456
+            const mensajeCodificado = encodeURIComponent(mensaje);
+            const whatsappURL = `https://wa.me/${telefono}?text=${mensajeCodificado}`;
+            
+            // Guardar pedido en localStorage
+            const pedido = {
+                id: pedidoId,
+                fecha: new Date().toISOString(),
+                productos: carrito,
+                total: total,
+                cliente: datosCliente,
+                categoria: 'nike-tech'
+            };
+            
+            let pedidos = JSON.parse(localStorage.getItem('pedidos_ezsens')) || [];
+            pedidos.push(pedido);
+            localStorage.setItem('pedidos_ezsens', JSON.stringify(pedidos));
+            
+            // Limpiar carrito
+            localStorage.removeItem('carrito');
+            carrito = [];
+            actualizarContadorCarrito();
+            
+            // Mostrar confirmación y abrir WhatsApp
+            mostrarNotificacion('¡Pedido confirmado! Redirigiendo a WhatsApp...', 'success');
+            
+            setTimeout(() => {
+                window.open(whatsappURL, '_blank');
+                cerrarCheckout();
+                document.getElementById('checkoutForm').reset();
+                
+                // Resetear selects
+                document.getElementById('distritoSearch').disabled = true;
+                document.getElementById('distritoSearch').placeholder = "Primero selecciona departamento";
+                document.getElementById('distrito').disabled = true;
+                document.getElementById('distrito').innerHTML = '<option value="">Selecciona distrito</option>';
+            }, 1500);
+        }
+    </script>
+</body>
+</html>

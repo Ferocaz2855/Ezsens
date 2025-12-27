@@ -1,0 +1,202 @@
+{
+  "departamentos": [
+    {
+      "nombre": "Amazonas",
+      "distritos": [
+        "Chachapoyas", "Asunción", "Balsas", "Cheto", "Chiliquin", "Chuquibamba",
+        "Granada", "Huancas", "La Jalca", "Leimebamba", "Levanto", "Magdalena",
+        "Mariscal Castilla", "Molinopampa", "Montevideo", "Olleros", "Quinjalca",
+        "Rioja", "San Francisco de Daguas", "San Isidro de Maino", "Soloco", "Sonche"
+      ]
+    },
+    {
+      "nombre": "Áncash",
+      "distritos": [
+        "Huaraz", "Cochabamba", "Colcabamba", "Huanchay", "Independencia", "Jangas",
+        "La Libertad", "Olleros", "Pampas Grande", "Pariacoto", "Pira", "Tarica"
+      ]
+    },
+    {
+      "nombre": "Apurímac",
+      "distritos": [
+        "Abancay", "Chacoche", "Circa", "Curahuasi", "Huanipaca", "Lambrama",
+        "Pichirhua", "San Pedro de Cachora", "Tamburco"
+      ]
+    },
+    {
+      "nombre": "Arequipa",
+      "distritos": [
+        "Arequipa", "Alto Selva Alegre", "Cayma", "Cerro Colorado", "Characato",
+        "Chiguata", "Jacobo Hunter", "La Joya", "Mariano Melgar", "Miraflores",
+        "Mollebaya", "Paucarpata", "Pocsi", "Polobaya", "Quequeña", "Sabandia",
+        "Sachaca", "San Juan de Siguas", "San Juan de Tarucani", "Santa Isabel de Siguas",
+        "Santa Rita de Siguas", "Socabaya", "Tiabaya", "Uchumayo", "Vitor", "Yanahuara",
+        "Yarabamba", "Yura"
+      ]
+    },
+    {
+      "nombre": "Ayacucho",
+      "distritos": [
+        "Ayacucho", "Acocro", "Acos Vinchos", "Carmen Alto", "Chiara", "Ocros",
+        "Pacaycasa", "Quinua", "San José de Ticllas", "San Juan Bautista",
+        "Santiago de Pischa", "Socos", "Tambillo", "Vinchos"
+      ]
+    },
+    {
+      "nombre": "Cajamarca",
+      "distritos": [
+        "Cajamarca", "Asunción", "Chetilla", "Cospan", "Encañada", "Jesús",
+        "Llacanora", "Los Baños del Inca", "Magdalena", "Matara", "Namora",
+        "San Juan"
+      ]
+    },
+    {
+      "nombre": "Callao",
+      "distritos": [
+        "Bellavista", "Callao", "Carmen de la Legua Reynoso", "La Perla",
+        "La Punta", "Ventanilla", "Mi Perú"
+      ]
+    },
+    {
+      "nombre": "Cusco",
+      "distritos": [
+        "Cusco", "Ccorca", "Poroy", "San Jerónimo", "San Sebastian", "Santiago",
+        "Saylla", "Wanchaq"
+      ]
+    },
+    {
+      "nombre": "Huancavelica",
+      "distritos": [
+        "Huancavelica", "Acobambilla", "Acoria", "Conayca", "Cuenca", "Huachocolpa",
+        "Huayllahuara", "Izcuchaca", "Laria", "Manta", "Mariscal Cáceres", "Moya",
+        "Nuevo Occoro", "Palca", "Pilchaca", "Vilca", "Yauli"
+      ]
+    },
+    {
+      "nombre": "Huánuco",
+      "distritos": [
+        "Huánuco", "Amarilis", "Chinchao", "Churubamba", "Margos", "Pillco Marca",
+        "Quisqui", "San Francisco de Cayran", "San Pedro de Chaulan", "Santa María del Valle",
+        "Yarumayo"
+      ]
+    },
+    {
+      "nombre": "Ica",
+      "distritos": [
+        "Ica", "La Tinguiña", "Los Aquijes", "Ocucaje", "Pachacutec", "Parcona",
+        "Pueblo Nuevo", "Salas", "San José de los Molinos", "San Juan Bautista",
+        "Santiago", "Subtanjalla", "Tate", "Yauca del Rosario"
+      ]
+    },
+    {
+      "nombre": "Junín",
+      "distritos": [
+        "Huancayo", "Carhuacallanga", "Chacapampa", "Chicche", "Chilca", "Chongos Alto",
+        "Chupuro", "Colca", "Cullhuas", "El Tambo", "Huacrapuquio", "Hualhuas",
+        "Huancan", "Huasicancha", "Huayucachi", "Ingenio", "Pariahuanca", "Pilcomayo",
+        "Pucara", "Quichuay", "Quilcas", "San Agustín", "San Jerónimo de Tunán",
+        "San Pedro de Saño", "Santo Domingo de Acobamba", "Sapallanga", "Sicaya",
+        "Viques"
+      ]
+    },
+    {
+      "nombre": "La Libertad",
+      "distritos": [
+        "Trujillo", "El Porvenir", "Florencia de Mora", "Huanchaco", "La Esperanza",
+        "Laredo", "Moche", "Poroto", "Salaverry", "Simbal", "Victor Larco Herrera"
+      ]
+    },
+    {
+      "nombre": "Lambayeque",
+      "distritos": [
+        "Chiclayo", "Chongoyape", "Eten", "Eten Puerto", "José Leonardo Ortiz",
+        "La Victoria", "Lagunas", "Monsefu", "Nueva Arica", "Oyotun", "Picsi",
+        "Pimentel", "Reque", "Santa Rosa", "Saña", "Tucume"
+      ]
+    },
+    {
+      "nombre": "Lima",
+      "distritos": [
+        "Lima", "Ancón", "Ate", "Barranco", "Breña", "Carabayllo", "Chaclacayo",
+        "Chorrillos", "Cieneguilla", "Comas", "El Agustino", "Independencia",
+        "Jesús María", "La Molina", "La Victoria", "Lince", "Los Olivos",
+        "Lurigancho", "Lurín", "Magdalena del Mar", "Miraflores", "Pachacámac",
+        "Pucusana", "Pueblo Libre", "Puente Piedra", "Punta Hermosa", "Punta Negra",
+        "Rímac", "San Bartolo", "San Borja", "San Isidro", "San Juan de Lurigancho",
+        "San Juan de Miraflores", "San Luis", "San Martín de Porres", "San Miguel",
+        "Santa Anita", "Santa María del Mar", "Santa Rosa", "Santiago de Surco",
+        "Surquillo", "Villa El Salvador", "Villa María del Triunfo"
+      ]
+    },
+    {
+      "nombre": "Loreto",
+      "distritos": [
+        "Iquitos", "Alto Nanay", "Fernando Lores", "Indiana", "Las Amazonas",
+        "Mazán", "Napo", "Punchana", "Putumayo", "San Juan Bautista",
+        "Teniente Manuel Clavero", "Torres Causana"
+      ]
+    },
+    {
+      "nombre": "Madre de Dios",
+      "distritos": [
+        "Tambopata", "Inambari", "Las Piedras", "Laberinto"
+      ]
+    },
+    {
+      "nombre": "Moquegua",
+      "distritos": [
+        "Moquegua", "Carumas", "Cuchumbaya", "Samegua", "San Cristobal", "Torata"
+      ]
+    },
+    {
+      "nombre": "Pasco",
+      "distritos": [
+        "Cerro de Pasco", "Chaupimarca", "Huachon", "Huariaca", "Huayllay", "Ninacaca",
+        "Pallanchacra", "Paucartambo", "San Francisco de Asís de Yarusyacan",
+        "Simon Bolivar", "Ticlacayan", "Tinyahuarco", "Vicco", "Yanacancha"
+      ]
+    },
+    {
+      "nombre": "Piura",
+      "distritos": [
+        "Piura", "Castilla", "Catacaos", "Cura Mori", "El Tallan", "La Arena",
+        "La Unión", "Las Lomas", "Tambo Grande"
+      ]
+    },
+    {
+      "nombre": "Puno",
+      "distritos": [
+        "Puno", "Acora", "Amantani", "Atuncolla", "Capachica", "Chucuito",
+        "Coata", "Huata", "Mañazo", "Paucarcolla", "Pichacani", "Plateria",
+        "San Antonio", "Tiquillaca", "Vilque"
+      ]
+    },
+    {
+      "nombre": "San Martín",
+      "distritos": [
+        "Moyobamba", "Calzada", "Habana", "Jepelacio", "Soritor", "Yantalo"
+      ]
+    },
+    {
+      "nombre": "Tacna",
+      "distritos": [
+        "Tacna", "Alto de la Alianza", "Calana", "Ciudad Nueva", "Inclan",
+        "Pachia", "Palca", "Pocollay", "Sama", "Coronel Gregorio Albarracín Lanchipa"
+      ]
+    },
+    {
+      "nombre": "Tumbes",
+      "distritos": [
+        "Tumbes", "Corrales", "La Cruz", "Pampas de Hospital", "San Jacinto",
+        "San Juan de la Virgen"
+      ]
+    },
+    {
+      "nombre": "Ucayali",
+      "distritos": [
+        "Calleria", "Campoverde", "Iparia", "Manantay", "Nueva Requena",
+        "Yarinacocha"
+      ]
+    }
+  ]
+}

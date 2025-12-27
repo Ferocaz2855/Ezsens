@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIKE X ZYNA - EZSENS</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <h1>EZSENS</h1>
+        </div>
+        <nav class="nav">
+            <a href="index.html" class="nav-link">Inicio</a>
+            <a href="nike-tech.html" class="nav-link">NIKE TECH</a>
+            <a href="nike-zyna.html" class="nav-link active">NIKE X ZYNA</a>
+            <a href="nike-nocta.html" class="nav-link">NIKE X NOCTA</a>
+        </nav>
+        <div class="cart-icon">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count">0</span>
+        </div>
+    </header>
+
+    <section class="category-banner" style="background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('assets/images/productos/nike-x-zyna-banner.jpg') center/cover;">
+        <div class="banner-content">
+            <h1>NIKE X ZYNA</h1>
+            <p>Colaboración exclusiva - Edición limitada</p>
+        </div>
+    </section>
+
+    <section class="category-products">
+        <div class="products-grid" id="zyna-products">
+            <!-- Productos se cargan dinámicamente -->
+        </div>
+    </section>
+
+    <!-- Shopping Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>TU CARRITO</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="cart-items" id="cartItems">
+                    <!-- Items del carrito -->
+                </div>
+                <div class="cart-total">
+                    <p>Total: <span id="cartTotal">S/ 0.00</span></p>
+                </div>
+                <button class="checkout-btn" id="checkoutBtn">REALIZAR PEDIDO</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="checkout-modal" id="checkoutModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>DATOS DEL PEDIDO</h3>
+                <button class="close-checkout">&times;</button>
+            </div>
+            <form id="checkoutForm" class="checkout-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nombre">Nombres *</label>
+                        <input type="text" id="nombre" name="nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="apellido">Apellidos *</label>
+                        <input type="text" id="apellido" name="apellido" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="whatsapp">WhatsApp *</label>
+                        <input type="tel" id="whatsapp" name="whatsapp" required placeholder="+51 999 888 777">
+                    </div>
+                    <div class="form-group">
+                        <label for="dni">DNI o CE *</label>
+                        <input type="text" id="dni" name="dni" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="provincia">Departamento/Provincia *</label>
+                        <div class="search-select">
+                            <input type="text" id="provinciaSearch" placeholder="Buscar departamento..." 
+                                   class="search-input" onkeyup="filtrarProvincias()">
+                            <select id="provincia" name="provincia" required class="select-hidden">
+                                <option value="">Selecciona departamento</option>
+                                <!-- Provincias se cargan dinámicamente -->
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="distrito">Distrito *</label>
+                        <div class="search-select">
+                            <input type="text" id="distritoSearch" placeholder="Buscar distrito..." 
+                                   class="search-input" disabled onkeyup="filtrarDistritos()">
+                            <select id="distrito" name="distrito" required class="select-hidden" disabled>
+                                <option value="">Primero selecciona departamento</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="direccion">Dirección completa *</label>
+                    <textarea id="direccion" name="direccion" rows="3" required placeholder="Calle, número, urbanización, referencia"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="referencia">Referencia adicional (opcional)</label>
+                    <textarea id="referencia" name="referencia" rows="2" placeholder="Punto de referencia cercano, color de casa, etc."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="aceptoTerminos" required>
+                        Acepto los términos y condiciones *
+                    </label>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="submit-order">CONFIRMAR PEDIDO</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>EZSENS</h4>
+                <p>Tienda oficial de ropa deportiva premium</p>
+            </div>
+            <div class="footer-section">
+                <h4>Contacto</h4>
+                <p><i class="fab fa-whatsapp"></i> +51 999 888 777</p>
+                <p><i class="fas fa-envelope"></i> info@ezsens.com</p>
+            </div>
+            <div class="footer-section">
+                <h4>Métodos de pago</h4>
+                <p>Yape / Plin / Transferencia</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 EZSENS. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Productos Nike x Zyna
+        const productosZyna = [
+            {
+                id: 201,
+                nombre: "Nike x Zyna Hoodie Limited Edition",
+                imagen: "assets/images/productos/nike-x-zyna-1.jpg",
+                bonos: "+150 bonbons",
+                precio: 1800.00, // En soles
+                sku: "ZYNA-001",
+                descripcion: "Chamarra edición limitada Nike x Zyna"
+            },
+            {
+                id: 202,
+                nombre: "Nike x Zyna Tech Pants",
+                imagen: "assets/images/productos/nike-x-zyna-2.jpg",
+                bonos: "+120 bonbons",
+                precio: 1450.00,
+                sku: "ZYNA-002",
+                descripcion: "Pantalones técnicos Nike x Zyna"
+            },
+            {
+                id: 203,
+                nombre: "Nike x Zyna T-Shirt",
+                imagen: "assets/images/productos/nike-x-zyna-3.jpg",
+                bonos: "+80 bonbons",
+                precio: 850.00,
+                sku: "ZYNA-003",
+                descripcion: "Polo Nike x Zyna colección especial"
+            }
+        ];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            cargarProductosZyna();
+            configurarEventos();
+        });
+
+        function cargarProductosZyna() {
+            const container = document.getElementById('zyna-products');
+            container.innerHTML = '';
+            
+            productosZyna.forEach(producto => {
+                const productCard = `
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('${producto.imagen}')"></div>
+                        <div class="product-info">
+                            <h3 class="product-title">${producto.nombre}</h3>
+                            <p class="product-bonus">${producto.bonos}</p>
+                            <p class="product-price">S/ ${producto.precio.toFixed(2)}</p>
+                            <p class="product-sku">SKU: ${producto.sku}</p>
+                            <p class="product-desc">${producto.descripcion}</p>
+                            <button class="add-to-cart" onclick="agregarAlCarrito(${producto.id})">
+                                AGREGAR AL CARRITO
+                            </button>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += productCard;
+            });
+        }
+
+        function configurarEventos() {
+            // Carrito
+            document.querySelector('.cart-icon').addEventListener('click', mostrarCarrito);
+            document.querySelector('.close-modal').addEventListener('click', cerrarCarrito);
+            document.getElementById('checkoutBtn').addEventListener('click', mostrarCheckout);
+            document.querySelector('.close-checkout').addEventListener('click', cerrarCheckout);
+            
+            // Checkout
+            document.getElementById('checkoutForm').addEventListener('submit', procesarPedido);
+            
+            // Cerrar modales al hacer clic fuera
+            window.addEventListener('click', (e) => {
+                if (e.target === document.getElementById('cartModal')) cerrarCarrito();
+                if (e.target === document.getElementById('checkoutModal')) cerrarCheckout();
+            });
+        }
+
+        // Funciones del carrito
+        function agregarAlCarrito(id) {
+            const producto = productosZyna.find(p => p.id === id);
+            if (!producto) return;
+            
+            let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+            const itemExistente = carrito.find(item => item.id === id);
+            
+            if (itemExistente) {
+                itemExistente.cantidad++;
+            } else {
+                carrito.push({
+                    ...producto,
+                    cantidad: 1
+                });
+            }
+            
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+            actualizarCarrito();
+            mostrarNotificacion(`${producto.nombre} agregado al carrito`, 'success');
+        }
+
+        function actualizarCarrito() {
+            const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+            const totalItems = carrito.reduce((total, item) => total + item.cantidad, 0);
+            document.querySelector('.cart-count').textContent = totalItems;
+        }
+
+        function mostrarCarrito() {
+            const modal = document.getElementById('cartModal');
+            const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+            const itemsContainer = document.getElementById('cartItems');
+            const totalContainer = document.getElementById('cartTotal');
+            
+            if (carrito.length === 0) {
+                itemsContainer.innerHTML = '<p class="cart-empty">El carrito está vacío</p>';
+                totalContainer.textContent = 'S/ 0.00';
+            } else {
+                let html = '';
+                let total = 0;
+                
+                carrito.forEach(item => {
+                    const subtotal = item.precio * item.cantidad;
+                    total += subtotal;
+                    
+                    html += `
+                        <div class="cart-item">
+                            <div class="cart-item-info">
+                                <h4>${item.nombre}</h4>
+                                <p>S/ ${item.precio.toFixed(2)} x ${item.cantidad}</p>
+                            </div>
+                            <div class="cart-item-actions">
+                                <p class="cart-item-subtotal">S/ ${subtotal.toFixed(2)}</p>
+                                <button onclick="eliminarDelCarrito(${item.id})" class="btn-delete">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                itemsContainer.innerHTML = html;
+                totalContainer.textContent = `S/ ${total.toFixed(2)}`;
+            }
+            
+            modal.style.display = 'flex';
+        }
+
+        function cerrarCarrito() {
+            document.getElementById('cartModal').style.display = 'none';
+        }
+
+        function eliminarDelCarrito(id) {
+            let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+            carrito = carrito.filter(item => item.id !== id);
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+            mostrarCarrito();
+            actualizarCarrito();
+        }
+
+        function mostrarCheckout() {
+            const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+            if (carrito.length === 0) {
+                mostrarNotificacion('El carrito está vacío', 'error');
+                return;
+            }
+            
+            cerrarCarrito();
+            document.getElementById('checkoutModal').style.display = 'flex';
+        }
+
+        function cerrarCheckout() {
+            document.getElementById('checkoutModal').style.display = 'none';
+        }
+
+        // Funciones de búsqueda para provincias/distritos
+        window.filtrarProvincias = function() {
+            const input = document.getElementById('provinciaSearch');
+            const filter = input.value.toUpperCase();
+            const select = document.getElementById('provincia');
+            const options = select.getElementsByTagName('option');
+            
+            for (let i = 0; i < options.length; i++) {
+                const txtValue = options[i].textContent || options[i].innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    options[i].style.display = "";
+                } else {
+                    options[i].style.display = "none";
+                }
+            }
+        }
+
+        window.filtrarDistritos = function() {
+            const input = document.getElementById('distritoSearch');
+            const filter = input.value.toUpperCase();
+            const select = document.getElementById('distrito');
+            const options = select.getElementsByTagName('option');
+            
+            for (let i = 0; i < options.length; i++) {
+                const txtValue = options[i].textContent || options[i].innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    options[i].style.display = "";
+                } else {
+                    options[i].style.display = "none";
+                }
+            }
+        }
+
+        // Función para mostrar notificaciones
+        function mostrarNotificacion(mensaje, tipo = 'success') {
+            const notificacion = document.createElement('div');
+            notificacion.className = `notificacion ${tipo}`;
+            notificacion.innerHTML = `
+                <i class="fas ${tipo === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
+                <span>${mensaje}</span>
+            `;
+            
+            document.body.appendChild(notificacion);
+            
+            setTimeout(() => notificacion.classList.add('show'), 10);
+            
+            setTimeout(() => {
+                notificacion.classList.remove('show');
+                setTimeout(() => notificacion.remove(), 300);
+            }, 3000);
+        }
+
+        // Función para procesar pedido
+        async function procesarPedido(e) {
+            e.preventDefault();
+            
+            // Validar términos
+            if (!document.getElementById('aceptoTerminos').checked) {
+                mostrarNotificacion('Debes aceptar los términos y condiciones', 'error');
+                return;
+            }
+            
+            const formData = new FormData(document.getElementById('checkoutForm'));
+            const datosCliente = Object.fromEntries(formData);
+            const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+            
+            if (carrito.length === 0) {
+                mostrarNotificacion('El carrito está vacío', 'error');
+                return;
+            }
+            
+            const total = carrito.reduce((sum, item) => sum + (item.precio * item.cantidad), 0);
+            const pedidoId = 'PED-' + Date.now().toString().slice(-6);
+            
+            // Crear mensaje para WhatsApp
+            let mensaje = `🛒 *NUEVO PEDIDO EZSENS* 🛒\n\n`;
+            mensaje += `*Pedido ID:* ${pedidoId}\n`;
+            mensaje += `*Fecha:* ${new Date().toLocaleString('es-PE')}\n\n`;
+            
+            mensaje += `*👤 DATOS DEL CLIENTE*\n`;
+            mensaje += `Nombre: ${datosCliente.nombre} ${datosCliente.apellido}\n`;
+            mensaje += `WhatsApp: ${datosCliente.whatsapp}\n`;
+            mensaje += `DNI/CE: ${datosCliente.dni}\n`;
+            mensaje += `Ubicación: ${datosCliente.provincia}, ${datosCliente.distrito}\n`;
+            mensaje += `Dirección: ${datosCliente.direccion}\n`;
+            if (datosCliente.referencia) {
+                mensaje += `Referencia: ${datosCliente.referencia}\n`;
+            }
+            
+            mensaje += `\n*🛍️ PRODUCTOS (NIKE X ZYNA)*\n`;
+            carrito.forEach((item, index) => {
+                const subtotal = item.precio * item.cantidad;
+                mensaje += `${index + 1}. ${item.nombre}\n`;
+                mensaje += `   Cantidad: ${item.cantidad}\n`;
+                mensaje += `   Precio: S/ ${item.precio.toFixed(2)}\n`;
+                mensaje += `   Subtotal: S/ ${subtotal.toFixed(2)}\n\n`;
+            });
+            
+            mensaje += `*💰 TOTAL A PAGAR: S/ ${total.toFixed(2)}*\n\n`;
+            mensaje += `*📋 ESTADO:* Pendiente de pago\n`;
+            mensaje += `*💳 MÉTODO:* Yape/Plin/Transferencia`;
+            
+            // Número de WhatsApp (cambiar por tu número)
+            const telefono = '51999888777'; // TU NÚMERO AQUÍ
+            const mensajeCodificado = encodeURIComponent(mensaje);
+            const whatsappURL = `https://wa.me/${telefono}?text=${mensajeCodificado}`;
+            
+            // Guardar pedido en localStorage
+            const pedido = {
+                id: pedidoId,
+                fecha: new Date().toISOString(),
+                productos: carrito,
+                total: total,
+                cliente: datosCliente,
+                categoria: 'nike-zyna'
+            };
+            
+            let pedidos = JSON.parse(localStorage.getItem('pedidos_ezsens')) || [];
+            pedidos.push(pedido);
+            localStorage.setItem('pedidos_ezsens', JSON.stringify(pedidos));
+            
+            // Limpiar carrito
+            localStorage.removeItem('carrito');
+            actualizarCarrito();
+            
+            // Mostrar confirmación y abrir WhatsApp
+            mostrarNotificacion('¡Pedido confirmado! Redirigiendo a WhatsApp...', 'success');
+            
+            setTimeout(() => {
+                window.open(whatsappURL, '_blank');
+                cerrarCheckout();
+                document.getElementById('checkoutForm').reset();
+            }, 1500);
+        }
+    </script>
+</body>
+</html>
